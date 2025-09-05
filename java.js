@@ -110,7 +110,7 @@ if(datas.length===0){
   <div class="font-semibold text-[32px] font-bangla text-[#18181B]">"${data.meaning?data.meaning:'আমরা কোন meaning খুঁজে পাচ্ছি না।'} /${data.pronunciation?data.pronunciation:'আমরা কোন pronunciation খুঁজে পাচ্ছি না।'}"</div>
 
   <div class="flex justify-between items-center mt-auto">
-  <button onclick="loadWordDetail(${data.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80] "><i class="fa-solid fa-circle-info"></i></button>
+  <button onclick="loadWordDetail(${data.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
   <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80] "><i class="fa-solid fa-volume-high"></i></button>
 
 </div>
@@ -145,4 +145,24 @@ const displayOn = (lessons) =>{
     levelContainer.append(newDiv)
   }
 }
+
+// search
+document.getElementById('btn-search').addEventListener('click', () => {
+  removeActive();
+  const input = document.getElementById('input-search');
+  const inputValue = input.value.trim().toLowerCase();
+  fetch(`https://openapi.programming-hero.com/api/words/all`)
+  .then(res=>res.json())
+  .then(data=>{
+    const allwords = data.data;
+    const filterwords = allwords.filter(word=>word.word.toLowerCase().includes(inputValue));
+   displayLoadWord(filterwords);
+    
+});
+  })
+  
+
+
+
+
 loadOn();
