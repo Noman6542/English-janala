@@ -90,13 +90,34 @@
 
     </div>
   </section>
+  <section id="spinner" class="flex justify-center items-center hidden">
+    <span class="loading loading-infinity loading-xl"></span>
+  </section>
+<section id="card-cointainer" class="mx-auto w-11/12 p-5 mt-10 bg-gray-100 grid grid-cols-2 md:grid-cols-3 gap-5">
 
-<section id="card-cointainer" class="mx-auto w-11/12 p-5 mt-10 bg-gray-100 grid grid-cols-3 gap-5">
-
-
+<div class="col-span-full text-center space-y-4 bg-gray-300 py-5 rounded-3xl font-bangla">
+  <p class="font-medium text-[#79716B]">আপনি এখনো কোন Lesson Select করেন নি</p>
+  <h1 class="font-bold text-[35px]">একটি Lesson Select করুন।</h1>
+</div>
 
 
 </section>
+
+ <!-- modal  -->
+  <!-- Open the modal using ID.showModal() method -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="detailsCointainer"class="space-y-5">
+     
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
   
   <script src="./java.js"></script>
 </body>
