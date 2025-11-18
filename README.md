@@ -1,114 +1,61 @@
-# ENGLISH <img width="25px" src="./assets/logo.png" /> JANALA
+# 📚 English Janala: Vocabulary Learning Platform
+
+Welcome to **English Janala**, a comprehensive web application designed to help users learn and practice English vocabulary categorized by difficulty levels.
 
 ---
 
-## ⚡ API Endpoints
+## ✨ Features
 
-1. Get ⚡ All Levels
+This application implements the following key functionalities:
 
-```bash
-https://openapi.programming-hero.com/api/levels/all
-```
+### 1. Level Management
+* Dynamically fetch and display all available lesson levels from the API.
+* Generate interactive buttons for each lesson level on page load.
+* Highlight the **active lesson button** to indicate the currently viewed vocabulary set.
 
-1. Get ⚡ Words by Levels <br/>
-   https:// openapi.programming-hero.com/api/level/{id}
+### 2. Vocabulary Display
+* Load and display all words for a selected level in a responsive card format.
+* Each card shows the **Word, Meaning, and Pronunciation** (text).
+* Display a default message initially and a "No Word Found" message if a lesson has no words.
 
-```bash
-https://openapi.programming-hero.com/api/level/5
-```
+### 3. Word Details & Learning
+* Open a **modal** on clicking the details icon.
+* The modal fetches detailed information (Example Sentence, Synonyms) for the specific word.
+* Includes a "Complete Learning" button to close the modal.
 
-1. Get ⚡ Words Detail <br/>
-   https:// openapi.programming-hero.com/api/word/{id}
+### 4. Interactive Tools
+* **Search Functionality:** An input box allows real-time searching of words in the UI. Searching resets the active level button.
+* **Save Word Feature:** A heart icon button on each word card allows users to save words to a dedicated "Saved Box" section.
+* **Voice Pronunciation:** Implement text-to-speech functionality (sound icon) for vocabulary words.
 
-```bash
-https://openapi.programming-hero.com/api/word/5
-```
-
-1. Get ⚡ All Words <br/>
-
-```bash
-https://openapi.programming-hero.com/api/words/all
-```
-
-# Work To do
-
-### 1. Show Levels on The UI
-
-- [ ] Show a center-aligned heading as Figma
+### 5. User Experience & Robustness
+* Display a **Loading Spinner** while fetching vocabulary data from the API.
+* Implement robust **Data Handling** to avoid displaying falsy values (`undefined`, `null`) and show relevant messages for empty data.
 
 ---
 
-- [ ] Create dynamically generated buttons from **API-01** for each lesson
-- [ ] Lesson Buttons will be displayed on page load
+## 🚀 API Endpoints
+
+This project consumes data from the following public API endpoints provided by `programming-hero.com`.
+
+| # | Endpoint Description | Method | URL Structure | Example |
+| :--- | :--- | :--- | :--- | :--- |
+| **01** | Get All Levels | `GET` | `https://openapi.programming-hero.com/api/levels/all` | `/api/levels/all` |
+| **02** | Get Words by Level | `GET` | `https://openapi.programming-hero.com/api/level/{id}` | `/api/level/5` |
+| **03** | Get Word Detail | `GET` | `https://openapi.programming-hero.com/api/word/{id}` | `/api/word/5` |
+| **04** | Get All Words | `GET` | `https://openapi.programming-hero.com/api/words/all` | `/api/words/all` |
 
 ---
 
-### 2. Show Word Cards Based on Level
+## ⚙️ Technical Implementation
 
-- [ ] Show a default text that will be displayed in the Vocabulary section initially
-- [ ] on Clicking a Specific Lesson Button Load All the words from **API-02**
-- [ ] Display all words for a selected lesson in a card format, showing:
+### **Pronunciation Function**
 
-  - [ ] Word
-  - [ ] Word meaning & pronunciation
-  - [ ] Two buttons with relevant icons as per Figma
+The voice pronunciation feature utilizes the browser's built-in `SpeechSynthesisUtterance` Web API.
 
-- [ ] Show **\*No Word Found** message if no words exist for a lesson
-
----
-
-- [ ] Create functionality to highlight the active lesson button
-
----
-
-### 3. Use Different Color on The Active Level Button
-
-- [ ] After Successfully Loading words of a level , diffirentiate the button so user can understand which button is active
-
-### 4. Vocabulary Details
-
-- [ ] Create functionality to open a modal when clicking the details icon
-- [ ] Data will be load from **API-03**
-- [ ] modal will displays:
-  - [ ] Word with pronunciation
-  - [ ] Example sentence
-  - [ ] Synonyms
-  - [ ] A "Complete Learning" button to close the modal
-
-### 5. Handling Invalid Data
-
-- [ ] avoid displaying falsy values like `undefined` or `null`
-- [ ] display relevant words if no data is found
-
-### 6. Loading Spinner
-
-- [ ] Create a loading spinner that will be display when vocabulary is loading from API
-
-### 7. Implement Search Functionality
-
-- [ ] Take a input Box.
-- [ ] on Changing value It will Search word and show in the UI.
-- [ ] If anyone Do search reset active button
-
-### 8. Save Word Feature
-
-- [ ] in the UI of Card add a button `Heart icon`
-- [ ] on Clicking it. Store the Word in the Saved Box
-- [ ] Show Saved words in a Different Section.
-
-### 9. Speak your Vocabularies
-
-- [ ] Create functionality for voice pronunciation of vocabulary words
-- [ ] Use below function and implement on clicking sound icon
-
-```js
+```javascript
 function pronounceWord(word) {
   const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
+  utterance.lang = "en-EN"; // Sets the language to English
   window.speechSynthesis.speak(utterance);
 }
-```
-
-For More >> you can explore this implementation 👉 [https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ](https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ)
-
----
